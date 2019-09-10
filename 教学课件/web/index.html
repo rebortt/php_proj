@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>问道茶具官网</title>
+    <!-- 这里将使用链接吧css文件链接进来-->
+    <link href="css/style.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" type="text/css" href="css/jquery.jslides.css" media="screen" />
+    <script type="text/javascript" src="js/jquery-1.8.0.min.js"></script>
+    <script type="text/javascript" src="js/jquery.jslides.js"></script>
+    <script type="text/javascript" src="js/jquery.SuperSlide.2.1.1.js"></script>
+</head>
+<body>
+    <!--页头开始-->
+    <div class="top">
+        <div class="center">
+            <div class="logo"><img src="images/logo.png" width="141" height="42"></div>
+            <div class="menu">
+                <a href="">网站首页</a>
+                <a href="">关于我们</a>
+                <a href="">新闻动态</a>
+                <a href="">产品展示</a>
+                <a href="">给我留言</a>
+                <a href="">联系我们</a>
+            </div>
+        </div>
+    </div>
+    <!--页头结束-->
+    <!--焦点幻灯开始-->
+    <div id="full-screen-slider">
+        <ul id="slides">
+            <li style="background:url('images/banner1.jpg') no-repeat center top">
+                <a href="" target="_blank">第一张焦点幻灯的标题</a>
+            </li>
+            <li style="background:url('images/banner2.jpg') no-repeat center top">
+                <a href="" target="_blank">第二张焦点幻灯的标题</a>
+            </li>
+        </ul>
+    </div>
+    <!--焦点幻灯结束-->
+    <!--新闻动态、关于我们、最新产品形成的横向区域开始-->
+    <div class="container">
+        <!--新闻动态-->
+        <div class="news">
+            <div class="n_top">
+                <div class="cat_title">新闻中心</div>
+                <div class="more"><a href="">更多</a></div>
+            </div>
+            <div class="n_center">
+                <img src="images/news_thumbnail.jpg" width="111" height="90">
+                <div>高性价比的新茶上市，茶叶门户网站及微信公众平台也频频举行各类团购茶样派发活动，爱茶人士只需稍加留心......[详细]</div>
+            </div>
+            <div class="n_bottom">
+                <a href="#">养生茶，喝出男性健康</a>
+                <a href="#">茶事起源：“六朝以前的茶事”</a>
+                <a href="#">红碎茶红艳的颜色、鲜爽的香气和很高的营养价值</a>
+                <a href="#">中国古代史料中的茶字和世界各国对茶字的音译</a>
+                <a href="#">茶是用来喝的 一杯陈年普洱味道</a>
+            </div>
+        </div>
+        <!--关于我们-->
+        <div class="about">
+            <div class="a_top">
+                <div class="cat_title">关于我们</div>
+            </div>
+            <div class="a_center">
+                <img src="images/about_img.jpg" width="381" height="148">
+            </div>
+            <div class="a_bottom">问道茶具有限公司是一家以经营茶具、茶周边、茶叶产品为主的新型茶行业电子商务公司。公司正式成立于2010年1月4日，
+                在茶行业我们一直以来秉持着做茶就是做人的原则，一直非常自豪的走在茶行业的前端，公司现有运营部、广告部、销售部、物流部四个常规部门
+                ......[详细]</div>
+        </div>
+        <!--最新产品-->
+        <div class="produce">
+            <div class="p_top">
+                <div class="cat_title">新闻中心</div>
+                <div class="more"><a href="">更多</a></div>
+            </div>
+            <div class="p_bottom">
+                <div id="slideBox" class="slideBox">
+                    <div class="bd">
+                        <ul>
+                            <li><a href="" target="_blank"><img src="images/produce_thumbnail_1.jpg" width="300" height="270" /></a></li>
+                            <li><a href="" target="_blank"><img src="images/produce_thumbnail_2.jpg" width="300" height="270" /></a></li>
+                        </ul>
+                    </div>
+                </div>
+                <script type="text/javascript">
+                    jQuery(".slideBox").slide({mainCell:".bd ul",effect:"left",autoPlay:true});
+                </script>
+            </div>
+        </div>
+    </div>
+    <!--新闻动态、关于我们、最新产品形成的横向区域结束-->
+    <!--页尾开始-->
+    <div class="footer">
+        <div class="center_box">
+            <div class="text">
+                问道茶具<br />
+                电话：0000-0000000   E-mail:XXXX@XXXXXXX<br />
+                地址：xxxx省xxxx市xxxxxxxxxxxxx<br />
+                技术支持：xxxxxxxxxxx科技有限公司<br />
+                友情链接：中国茶叶网  茶文艺网
+            </div>
+            <div class="ewm">
+                <img src="images/ewm.png" alt="" />
+            </div>
+        </div>
+    </div>
+    <!--页尾结束-->
+</body>
+</html>
