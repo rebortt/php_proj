@@ -66,3 +66,30 @@ ul{list-style:none;}
 .footer .center_box .text{height:105px;color:#FFF;float:left;line-height:20px;font-size:13px;padding-top:13px;padding-left:120px;}
 .footer .center_box .text a{color:#FFF;font-size:13px;}
 .footer .center_box .ewm{height:95px;float:right;text-align:center;padding-right:120px;padding-top:25px;}
+
+/*关于我们页面*/
+.about_main{width:1000px;min-height:360px;height:auto;margin:0 auto;}
+/*slide*/
+.about_main .slide{height:360px;width:220px;float:left;border:1px solid #CCC;margin-top:5px;margin-bottom:5px;}
+.about_main .slide .cat_title{height:40px;line-height:40px;padding-left:20px;font-size:14px;color:#FFF;font-weight:bold;background-color:#66973c;}
+.about_main .slide .qq{height:85px;width:190px;border-bottom:1px dotted #d6d6d6;maigin:0 auto;padding-left:10px;font-size:14px;margin-top:15px;}
+.about_main .slide .qq div{height:42px;line-height:42px;maigin:0 auto;}
+.about_main .slide .service{height:58px;line-height:24px;width:160px;border-bottom:1px dotted #66973c;margin:0 auto;padding-top:10px;
+                            background: url(../images/clock.jpg) 8px center no-repeat;padding-left:40px;}
+.about_main .slide .service .title{font-weight:bold;font-size:14px;}
+.about_main .slide .service .detail{color:#f63;font-weight:bold;font-family:Arial,Helvetica,sans-serif;font-size:14px;}
+.about_main .slide .weixin{height:58px;line-height:24px;width:160px;border-bottom:1px dotted #66973c;margin:0 auto;padding-top:10px;
+    background: url(../images/weixin.jpg) 8px center no-repeat;padding-left:40px;}
+.about_main .slide .weixin .title{font-weight:bold;font-size:14px;}
+.about_main .slide .weixin .detail{color:#000;font-weight:bold;font-family:Arial,Helvetica,sans-serif;font-size:13px;}
+.about_main .slide .email{height:58px;line-height:24px;width:160px;border-bottom:1px dotted #d6d6d6;margin:0 auto;padding-top:10px;
+    background: url(../images/email.jpg) 8px center no-repeat;padding-left:40px;}
+.about_main .slide .email .title{font-weight:bold;font-size:14px;}
+.about_main .slide .email .detail{color:#000;font-weight:bold;font-family:Arial,Helvetica,sans-serif;font-size:13px;}
+/*right*/
+.about_main .right{min-height:360px;height:auto;width:760px;float:right;}
+.content{padding:5px;line-height:22px;font-size:13px;text-indent:2em;}
+/*业内导航*/
+.submenu{height:30px;line-height:30px;width:750px;border-bottom:1px solid #666;padding-left:10px;}
+.right .submenu a{font-size:14px;}
+
