@@ -1,5 +1,5 @@
 <?php
-session_start();
+require_once('session.php');
 require_once('../inc/conn.php');
 //设置该页面的编码为utf-8
 header("Content-Type:text/html;charset=utf-8");

@@ -1,5 +1,4 @@
 <?php
-session_start();
 require_once('session.php');
 require_once('../inc/conn.php');
 $sql = "select * from config";
@@ -66,10 +65,10 @@ $rs = mysql_fetch_array($result);
         <tr>
             <td height="33">网站logo</td>
             <td colspan="2">
-                <input name="site_logo" type="text" id="site_logo" value="<?php echo isset($rs['site_log'])?$rs['site_log']:'' ?>" size="40" />
+                <input name="site_logo" type="text" id="site_logo" value="<?php echo isset($rs['site_logo'])?$rs['site_logo']:'' ?>" size="40" />
                 <input type="button" id="image3" value="上传" />
             </td>
-        </tr>s
+        </tr>
         <tr>
             <td height="33">公司二维码</td>
             <td colspan="2">

@@ -27,7 +27,7 @@ require_once('../inc/conn.php');
         //计算总页数
         $page_num=ceil($total_num/$pagesize);
         //设置页数
-        $page=$_GET['page'];
+        $page=isset($_GET['page'])?$_GET['page']:1;
         if($page<1 || $page==''){
             $page=1;
         }
@@ -44,13 +44,16 @@ require_once('../inc/conn.php');
         $result=mysql_query($sql);
         if($total_num>0){
             while($row=mysql_fetch_array($result)){
-                ?>
-                <tr>
-                    <td height="35"><?=$row['admin_name']?></td>
-                    <td><input type="button" name="button" id="button" value="修改" onclick="window.location.href='admin_modify.php?id=<?=$row['id']?>'" />&nbsp;&nbsp;
-                        <input type="button" name="button2" id="button2" value="删除" onclick="window.location.href='admin_delete.php?id=<?=$row['id']?>'" <?php if($row['admin_name']=='admin'){echo "disabled='disabled'";}?> /></td>
-                </tr>
-                <?
+
+                echo "<tr>".
+                    "<td height='35'>".$row['admin_name']."</td>".
+                    "<td><input type='button' name='button' id='button' value='修改' onclick='window.location.href=\"admin_modify.php?id=".$row['id']."\"' />".
+                        "    <input type='button' name='button2' id='button2' value='删除' onclick='window.location.href=\"admin_delete.php?id=".$row['id']."\"' ";
+                                if($row['admin_name']=='admin'){echo "disabled='disabled'";}
+                echo "/>".
+                        "</td>".
+                    "</tr>";
+
             }
         }else{
             echo "<tr><td colspan='2' height='31' style='color:red;font-size:13px'>暂无记录</td></tr>";
@@ -61,5 +64,5 @@ require_once('../inc/conn.php');
         </tr>
     </table>
 </form>
-<body>
+</body>
 </html>

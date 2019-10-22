@@ -11,7 +11,7 @@ require_once ('../inc/conn.php');
 <body>
 <?php
 if($_POST['admin_pass']==''){
-    echo "<script>alert('请输入新密码!');window.location.href='admin_modify.php'</script>";
+    echo "<script>alert('请输入新密码!');window.location.href='admin_modify.php?id=".$_GET['id']."'</script>";
     exit;
 }
 $sql="update admin set admin_pass='".$_POST['admin_pass']."' where id='".$_GET['id']."'";
