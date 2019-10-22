@@ -153,7 +153,5 @@ $rs = mysql_fetch_array($result);
 </form>
 </body>
 </html>
-<?php
 
-?>
 
