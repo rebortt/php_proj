@@ -10,10 +10,21 @@ require_once('../inc/conn.php');
 </head>
 <body>
 <?php
-$sql="insert into single(title,comefrom,pubdate,keywords,description,content) values('".
-    $_POST['title']."','".$_POST['comefrom']."','".$_POST['pubdate']."','".$_POST['keywords']."','".
-    $_POST['description']."','".$_POST['content']."')";
-mysql_query($sql,$conn);
+$pubdate = trim($_POST['pubdate']);
+$keywords = trim($_POST['keywords']);
+$description = trim($_POST['description']);
+$sql_add="insert into single (title,comefrom,pubdate,keywords,description,content) values
+('".$_POST['title']."','".$_POST['comefrom']."','".$pubdate."','".$keywords
+    ."','".$description."','".$_POST['content']."')";
+if(!mysql_query($sql_add,$conn))
+{
+    die('Can\'t insert into DataBase:' .mysql_error());
+}else{
+    echo "<script>alert('添加成功！');window.location.href='single_list.php';</script>";
+}
+exit;
+mysql_close($conn);
 ?>
 </body>
 </html>
+

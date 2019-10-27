@@ -4,7 +4,7 @@ require_once('session.php');
 <!doctype html>
 <html>
 <head>
-    <meta http-equiv="content-type" content="text/html;charset=utf-8" />
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
     <title>添加单页</title>
     <link rel="stylesheet" href="kindeditor/themes/default/default.css" />
     <link rel="stylesheet" href="css/table.css" type="text/css" />
@@ -56,11 +56,11 @@ require_once('session.php');
             <td height="35">发布日期：
             </td>
             <td>
-                <input name="pubdate" type="text" id="pubdate" value="
                 <?php
-                    date_default_timezone_set('UTC');
-                    echo date(Y年m月d日);
-                ?>" />
+                date_default_timezone_set('UTC');
+                $pubdate = date("Y/m/d");
+                ?>
+                <input name="pubdate" type="text" id="pubdate" value="<?=$pubdate?>" />
             </td>
         </tr>
         <tr>

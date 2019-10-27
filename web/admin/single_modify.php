@@ -48,21 +48,21 @@ $rs=mysql_fetch_array($result);
                 <span style="color:#F30">*</span>标题：
             </td>
             <td width="85%">
-                <input name="title" type="text" id="title" size="50" value="<?php echo $rs['title'] ?>"/>
+                <input name="title" type="text" id="title" size="50" value="<?=$rs['title'] ?>"/>
             </td>
         </tr>
         <tr>
             <td height="35">来源：
             </td>
             <td>
-                <input name="comefrom" type="text" id="comefrom" value="<?php echo $rs['comefrom'] ?>" />
+                <input name="comefrom" type="text" id="comefrom" value="<?=$rs['comefrom'] ?>" />
             </td>
         </tr>
         <tr>
             <td height="35">发布日期：
             </td>
             <td>
-                <input name="pubdate" type="text" id="pubdate" value="<?php echo $rs['pubdate'] ?>" />
+                <input name="pubdate" type="text" id="pubdate" value="<?=$rs['pubdate'] ?>" />
             </td>
         </tr>
         <tr>
@@ -70,7 +70,7 @@ $rs=mysql_fetch_array($result);
             <td>
                 <label for="keywords"></label>
                 <textarea name="keywords" cols="60" rows="3" id="keywords">
-                    <?php echo $rs['keywords'] ?>
+                    <?=$rs['keywords'] ?>
                 </textarea>
             </td>
         </tr>
@@ -78,7 +78,7 @@ $rs=mysql_fetch_array($result);
             <td height="68">描述：</td>
             <td>
                 <textarea name="description" cols="60" rows="3" id="url3">
-                    <?php echo $rs['description'] ?>
+                    <?=$rs['description'] ?>
                 </textarea>
             </td>
         </tr>
@@ -87,8 +87,8 @@ $rs=mysql_fetch_array($result);
                 <span style="color:#F30">*</span>内容：
             </td>
             <td>
-                <textarea name="content" id="content" style="width:800px;height:300px;visibility:hidden;">
-                    <?php echo htmlspecailchars($rs['content']) ?>
+                <textarea name="content" id="content" style="width:800px;height:300px;">
+                    <?=htmlspecialchars($rs['content']) ?>
                 </textarea>
             </td>
         </tr>

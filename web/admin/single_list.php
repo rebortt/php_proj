@@ -28,39 +28,41 @@ require_once('../inc/conn.php');
             //计算总页数
             $page_num=ceil($total_num/$pagesize);
             //设置页数
-            $page=$_GET['page'];
+            $page=isset($_GET['page'])?$_GET['page']:1;
             if($page<1 || $page==''){
                 $page=1;
             }
-        if($page>$page_num){
-            $page=$page_num;
-        }
-        //计算记录的偏移量
-        $offset=$pagesize*($page-1);
-        //上一页、下一页
-        $prepage=($page<>1)?$page-1:$page;
-        $nextpage=($page<>$page_num)?$page+1:$page;
-        //读取指定的记录数
-        $sql="select * from single limit $offset,$pagesize";
-        $result=mysql_query($sql);
-        while($row=mysql_fetch_array($result)) {
+            if($page>$page_num){
+                $page=$page_num;
+            }
+            //计算记录的偏移量
+            $offset=$pagesize*($page-1);
+            //上一页、下一页
+            $prepage=($page<>1)?$page-1:$page;
+            $nextpage=($page<>$page_num)?$page+1:$page;
+            //读取指定的记录数
+            $sql="select * from single limit $offset,$pagesize";
+            $result=mysql_query($sql);
+            if($total_num>0){
+                while($row=mysql_fetch_array($result)) {
+                    ?>
+                    <tr>
+                        <td height="31"><?php echo $row['id'] ?></td>
+                        <td><?php echo $row['title'] ?></td>
+                        <td><?php echo $row['pubdate'] ?></td>
+                        <td width="12%">
+                            <input type="button" name="button" id="button" value="修改"
+                                   onclick="window.location.href='single_modify.php?id=<?php echo $row['id'] ?>'"/>
+                        </td>
+                        <td width="11%">
+                            <input type="button" name="button2" id="button2" value="删除"
+                                   onclick="window.location.href='single_delete.php?id=<?php echo $row['id'] ?>'"/>
+                        </td>
+                    </tr>
+                    <?php
+                }
+            }
             ?>
-            <tr>
-                <td height="31"><?php echo $rs['id'] ?></td>
-                <td><?php echo $rs['title'] ?></td>
-                <td><?php echo $rs['pubdate'] ?></td>
-                <td width="12%">
-                    <input type="button" name="button" id="button" value="修改"
-                           onclick="window.location.href='single_modify.php?id=<?php echo $row['id'] ?>'"/>
-                </td>
-                <td width="11%">
-                    <input type="button" name="button2" id="button2" value="删除"
-                           onclick="window.location.href='single_delete.php?id=<?php echo $row['id'] ?>'"/>
-                </td>
-            </tr>
-            <?php
-        }
-        ?>
             <tr>
                 <td height="43" colspan="5" align="center">
                     <?=$page?>/<?=$page_num?>&nbsp;&nbsp;
