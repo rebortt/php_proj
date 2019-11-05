@@ -5,7 +5,7 @@ require_once('session.php');
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
-    <title>添加单页</title>
+    <title>添加文章</title>
     <link rel="stylesheet" href="kindeditor/themes/default/default.css" />
     <link rel="stylesheet" href="css/table.css" type="text/css" />
     <script charset="UTF-8" src="kindeditor/kindeditor-min.js"></script>
@@ -16,14 +16,26 @@ require_once('session.php');
             editor=K.create('textarea[name="content"]',{
                 allowFileManager:true
             });
+            K('#image3').click(function(){
+                editor.loadPlugin('image',function(){
+                    editor.plugin.imageDialog({
+                        showRemote:true,
+                        imageUrl:K('#url3').val(),
+                        clickFn:function(url,title,width,height,border,align){
+                            K('#url3').val(url);
+                            editor.hideDialog();
+                        }
+                    });
+                });
+            });
         });
     </script>
 </head>
 <body>
-<form id="form1" name="form1" method="post" action="single_add_pass.php">
+<form id="form1" name="form1" method="post" action="produce_add_pass.php">
     <table width="100%" border="1" cellspacing="0" cellpadding="0">
         <tr>
-            <td colspan="2" class="tt">添加单页</td>
+            <td colspan="2" class="tt">添加产品</td>
         </tr>
         <tr>
             <td width="15%" height="35">
@@ -52,7 +64,16 @@ require_once('session.php');
             </td>
         </tr>
         <tr>
-            <td height="68">关键字：</td>
+            <td height="35">
+                <span style="color:#F30">*</span>缩略图：
+            </td>
+            <td>
+                <input name="thumbnail" type="text" id="url3" value="" />
+                <input type="button" id="image3" value="选择图片" />（建议大小为70*70）
+            </td>
+        </tr>
+        <tr>
+            <td height="68">关键词：</td>
             <td>
                 <label for="keywords"></label>
                 <textarea name="keywords" cols="60" rows="3" id="keywords"></textarea>
@@ -69,7 +90,13 @@ require_once('session.php');
                 <span style="color:#F30">*</span>内容：
             </td>
             <td>
-                <textarea name="content" style="width:800px;height:300px;visibility:hidden;"></textarea>
+                <textarea name="content" style="width:800px;height:300px;"></textarea>
+            </td>
+        </tr>
+        <tr>
+            <td height="35">推荐位：</td>
+            <td>
+                <input name="posid[]" type="checkbox" id="posid" value="setindex" />首页推荐&nbsp;&nbsp;
             </td>
         </tr>
         <tr>
