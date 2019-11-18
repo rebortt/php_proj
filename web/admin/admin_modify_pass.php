@@ -1,6 +1,6 @@
 <?php
 require_once('session.php');
-require_once ('../inc/conn.php');
+require_once ('../inc/conn_pdo.php');
 ?>
 <!DOCTYPE html>
 <html>
@@ -14,10 +14,13 @@ if($_POST['admin_pass']==''){
     echo "<script>alert('请输入新密码!');window.location.href='admin_modify.php?id=".$_GET['id']."'</script>";
     exit;
 }
-$sql="update admin set admin_pass='".$_POST['admin_pass']."' where id='".$_GET['id']."'";
-mysql_query($sql);
+
+$sql="update admin set admin_pass=? where id=?";
+$sth = $dbh->prepare($sql);
+$sth->execute(array($_POST['admin_pass'], $_GET['id']));
+
 echo "<script>alert('修改成功!');window.location.href='admin_list.php'</script>";
-mysql_close($conn);
+$dbh = null;
 ?>
 </body>
 </html>

@@ -30,7 +30,14 @@ $rows = $dbh->query($sql);
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
         <title>焦点幻灯列表</title>
-        <link href="css/table.css" rel="stylesheet" type="text/css" />
+
+        <!-- 新 Bootstrap 核心 CSS 文件 -->
+        <link href="css/bootstrap.min.css" rel="stylesheet">
+        <!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
+        <script src="js/jquery-3.4.1.min.js"></script>
+        <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+        <script src="js/bootstrap.min.js"></script>
+
         <script type="text/javascript">
             function AutoResizeImage(maxWidth,maxHeight,objImg){
                 var img = new Image();
@@ -61,12 +68,16 @@ $rows = $dbh->query($sql);
         </script>
     </head>
     <body>
-    <table width="100%" border="1" cellspacing="0" cellpadding="0">
+    <table class="table table-striped table-hover table-bordered">
         <tr>
-            <td height="41" colspan="5" class="tt">焦点幻灯列表</td>
+            <td colspan="5">焦点幻灯列表</td>
         </tr>
         <tr>
-            <td height="35">标题</td><td>链接</td><td width="26%">缩略图</td><td>排序</td><td width="15%">操作</td>
+            <td>标题</td>
+            <td>链接</td>
+            <td>缩略图</td>
+            <td>排序</td>
+            <td>操作</td>
         </tr>
         <tr>
             <?php
@@ -74,21 +85,21 @@ $rows = $dbh->query($sql);
                 foreach ($rows as $row) {
             ?>
 
-            <td width="38%" height="70"><?php echo $row['title']?></td>
-            <td width="13%"><?php if($row['link']==''){echo '无';}else{?><a target="new" href="<?=$row['link']?>">查看</a><?php }?></td>
+            <td><?php echo $row['title']?></td>
+            <td><?php if($row['link']==''){echo '无';}else{?><a target="new" href="<?=$row['link']?>">查看</a><?php }?></td>
             <td><img src="<?=$row['thumbnail']?>" width="0" height="0" onload="AutoResizeImage(0,60,this)"></td>
-            <td width="8%"><?=$row['orderid']?></td>
-            <td><input type="submit" name="button" id="button" value="修改" onclick="window.location.href='slide_modify.php?id=<?=$row['id']?>'" />&nbsp;&nbsp;
-                <input type="button" name="button2" id="button2" value="删除" onclick="window.location.href='slide_delete.php?id=<?=$row['id']?>'" /></td>
+            <td><?=$row['orderid']?></td>
+            <td><input type="submit" name="button" id="button" value="修改" class='btn btn-secondary' onclick="window.location.href='slide_modify.php?id=<?=$row['id']?>'" />&nbsp;&nbsp;
+                <input type="button" name="button2" id="button2" value="删除" class='btn btn-secondary' onclick="window.location.href='slide_delete.php?id=<?=$row['id']?>'" /></td>
         </tr>
         <?php
         }
         }else{
-            echo "<tr><td colspan='5' height='31' style='color:red;font-size:13px'>暂无记录</td></tr>";
+            echo "<tr><td colspan='5' style='color:red;font-size:13px'>暂无记录</td></tr>";
         }
         ?>
         <tr>
-            <td height="43" colspan="5" align="center"> <?=$page?>/<?=$page_num?>&nbsp;&nbsp;<a href="?page=1">首页</a>&nbsp;&nbsp;	<a href="?page=<?=$prepage?>">上一页</a>&nbsp;&nbsp;<a href="?page=<?=$nextpage?>">下一页</a>&nbsp;&nbsp;<a href="?page=<?=$page_num?>"> 尾页</a></td>
+            <td colspan="5" align="center"> <?=$page?>/<?=$page_num?>&nbsp;&nbsp;<a href="?page=1">首页</a>&nbsp;&nbsp;	<a href="?page=<?=$prepage?>">上一页</a>&nbsp;&nbsp;<a href="?page=<?=$nextpage?>">下一页</a>&nbsp;&nbsp;<a href="?page=<?=$page_num?>"> 尾页</a></td>
         </tr>
     </table>
     </body>

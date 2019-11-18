@@ -1,5 +1,4 @@
-<?php 
-session_start();
+<?php
 require_once('session.php');
 require_once('../inc/conn_pdo.php');
 ?>

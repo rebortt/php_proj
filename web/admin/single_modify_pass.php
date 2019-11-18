@@ -1,6 +1,6 @@
 <?php
 require_once('session.php');
-require_once('../inc/conn.php');
+require_once ('../inc/conn_pdo.php');
 ?>
 <!doctype html>
 <html>
@@ -13,20 +13,13 @@ require_once('../inc/conn.php');
 $pubdate=trim($_POST['pubdate']);
 $keywords=trim($_POST['keywords']);
 $description=trim($_POST['description']);
-$sql="update single set title='".$_POST['title'].
-    "',comefrom='".$_POST['comefrom'].
-    "',pubdate='".$pubdate.
-    "',keywords='".$keywords.
-    "',description='".$description.
-    "',content='".$_POST['content']."' where id='".$_GET['id']."'";
 
-if(!mysql_query($sql,$conn))
-{
-    die('Can\'t update single:' .mysql_error());
-}else{
-    echo "<script>alert('修改成功！');window.location.href='single_list.php';</script>";
-}
-mysql_close($conn);
+$sql="update single set title=?,comefrom=?,pubdate=?,keywords=?,description=?,content=? where id=?";
+$sth = $dbh->prepare($sql);
+$sth->execute(array($_POST['title'],$_POST['comefrom'],$pubdate,$keywords,$description,$_POST['content'],$_GET['id']));
+
+echo "<script>alert('修改成功！');window.location.href='single_list.php';</script>";
+$dbh = null;
 ?>
 </body>
 </html>

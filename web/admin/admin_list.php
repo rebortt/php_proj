@@ -1,27 +1,36 @@
 <?php
 require_once('session.php');
-require_once('../inc/conn.php');
+require_once('../inc/conn_pdo.php');
 ?>
 <!DOCTYPE html>
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>管理员列表</title>
-    <link href="css/table.css" rel="stylesheet" type="text/css" />
+    <!-- 新 Bootstrap 核心 CSS 文件 -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
+    <script src="js/jquery-3.4.1.min.js"></script>
+    <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+    <script src="js/bootstrap.min.js"></script>
+    <style>
+        *{
+            font-size:14px;
+        }
+    </style>
 </head>
 <body>
-<form name="form_add" id="form_add" action="admin_add_pass.php" method="post" >
-    <table width="100%" border="1" cellspacing="0" cellpadding="0">
+    <table class="table table-striped table-hover table-bordered">
         <tr>
-            <td class="tt" colspan="2">管理员列表</td>
+            <td colspan="2">管理员列表</td>
         </tr>
         <tr>
-            <td height="35">帐号</td>
-            <td width="25%">操作</td>
+            <td width="75%">帐号</td>
+            <td>操作</td>
         </tr>
         <?php
         //记录的总条数
-        $total_num=mysql_num_rows(mysql_query("select id from admin"));
+        $total_num=$dbh->query("select id from admin")->rowCount();
         //设置每页显示的记录数
         $pagesize=10;
         //计算总页数
@@ -40,15 +49,20 @@ require_once('../inc/conn.php');
         $prepage=($page<>1)?$page-1:$page;
         $nextpage=($page<>$page_num)?$page+1:$page;
         //读取指定记录数
-        $sql="select * from admin limit $offset,$pagesize";
-        $result=mysql_query($sql);
-        if($total_num>0){
-            while($row=mysql_fetch_array($result)){
+        $sql = "select * from admin limit $offset,$pagesize";
+        $sth = $dbh->prepare($sql);
+        $sth->execute();
+        $rows = $sth->fetchAll();
 
+        /*$sql="select * from admin limit $offset,$pagesize";
+        $rows = $dbh->query($sql);*/
+
+        if($total_num>0){
+            foreach ($rows as $row) {
                 echo "<tr>".
-                    "<td height='35'>".$row['admin_name']."</td>".
-                    "<td><input type='button' name='button' id='button' value='修改' onclick='window.location.href=\"admin_modify.php?id=".$row['id']."\"' />".
-                        "    <input type='button' name='button2' id='button2' value='删除' onclick='window.location.href=\"admin_delete.php?id=".$row['id']."\"' ";
+                    "<td>".$row['admin_name']."</td>".
+                    "<td><input type='button' name='button' id='button' value='修改' class='btn btn-secondary' onclick='window.location.href=\"admin_modify.php?id=".$row['id']."\"' />".
+                        "    <input type='button' name='button2' id='button2' value='删除' class='btn btn-secondary' onclick='window.location.href=\"admin_delete.php?id=".$row['id']."\"' ";
                                 if($row['admin_name']=='admin'){echo "disabled='disabled'";}
                 echo "/>".
                         "</td>".
@@ -60,9 +74,12 @@ require_once('../inc/conn.php');
         }
         ?>
         <tr>
-            <td height="35" colspan="2" align="center"> <?=$page?>/<?=$page_num?>&nbsp;&nbsp;<a href="?page=1">首页</a>&nbsp;&nbsp;	<a href="?page=<?=$prepage?>">上一页</a>&nbsp;&nbsp;<a href="?page=<?=$nextpage?>">下一页</a>&nbsp;&nbsp;<a href="?page=<?=$page_num?>"> 尾页</a> </td>
+            <td colspan="2" align="center"> <?=$page?>/<?=$page_num?>&nbsp;&nbsp;<a href="?page=1">首页</a>&nbsp;&nbsp;	<a href="?page=<?=$prepage?>">上一页</a>&nbsp;&nbsp;<a href="?page=<?=$nextpage?>">下一页</a>&nbsp;&nbsp;<a href="?page=<?=$page_num?>"> 尾页</a> </td>
         </tr>
     </table>
-</form>
+
 </body>
 </html>
+<?php
+$dbh = null;
+?>

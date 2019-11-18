@@ -7,9 +7,21 @@ require_once('session.php');
     <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
     <title>添加焦点幻灯</title>
     <link rel="stylesheet" href="kindeditor/themes/default/default.css" />
-    <link rel="stylesheet" href="css/table.css" type="text/css" />
     <script charset="UTF-8" src="kindeditor/kindeditor-min.js"></script>
     <script charset="UTF-8" src="kindeditor/lang/zh_CN.js"></script>
+
+    <!-- 新 Bootstrap 核心 CSS 文件 -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
+    <script src="js/jquery-3.4.1.min.js"></script>
+    <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+    <script src="js/bootstrap.min.js"></script>
+    <style>
+        *{
+            font-size:14px;
+        }
+    </style>
+
     <script>
         var editor;
         KindEditor.ready(function(K){
@@ -32,49 +44,32 @@ require_once('session.php');
     </script>
 </head>
 <body>
-<form id="form1" name="form1" method="post" action="slide_add_pass.php">
-    <table width="100%" border="1" cellspacing="0" cellpadding="0">
-        <tr>
-            <td colspan="2" class="tt">添加幻灯</td>
-        </tr>
-        <tr>
-            <td width="15%" height="35">
-                <span style="color:#F30">*</span>标题：
-            </td>
-            <td width="85%">
-                <input name="title" type="text" id="title" size="50" />
-            </td>
-        </tr>
-        <tr>
-            <td height="35">链接：
-            </td>
-            <td>
-                <input name="link" type="text" id="link" />
-            </td>
-        </tr>
-        <tr>
-            <td height="35">
-                <span style="color:#F30">*</span>缩略图：
-            </td>
-            <td>
-                <input name="thumbnail" type="text" id="slide_url" value="" />
-                <input type="button" id="slide_image" value="选择图片" />
-            </td>
-        </tr>
-        <tr>
-            <td height="35">
-                <span style="color:#F30">*</span>排序：
-            </td>
-            <td>
-                <input id="orderid" name="orderid" type="text" size="20" />
-            </td>
-        </tr>
-        <tr>
-            <td height="35" colspan="2">
-                <input type="submit" name="Submit" value="提交" />
-            </td>
-        </tr>
-    </table>
-</form>
+<div class="container-fluid">
+    <h4>添加焦点幻灯</h4>
+    <form id="form1" name="form1" method="post" action="slide_add_pass.php">
+        <div class="form-group">
+            <label for="title"><span style="color:#F30">*</span>标题：</label>
+            <input id="title" name="title" class="form-control col-md-6"  type="text" size="50" />
+        </div>
+        <div class="form-group">
+            <label for="link">链接：</label>
+            <input id="link" name="link" class="form-control col-md-6" type="text" size="50" />
+        </div>
+        <div class="form-group">
+            <label for="slide_url"><span style="color:#F30">*</span>缩略图：</label>
+            <div class="input-group mb-3">
+                <input id="slide_url" name="thumbnail" class="form-control col-md-6" type="text" size="50" value="" />
+                <div class="input-group-append">
+                    <button id="slide_image" class="btn btn-secondary" type="button">选择图片</button>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="orderid"><span style="color:#F30">*</span>排序：</label>
+            <input id="orderid" name="orderid" class="form-control col-md-6"  type="text" size="50" />
+        </div>
+        <button type="submit" class="btn btn-primary">提交</button>
+    </form>
+</div>
 </body>
 </html>

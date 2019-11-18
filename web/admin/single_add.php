@@ -10,74 +10,76 @@ require_once('session.php');
     <link rel="stylesheet" href="css/table.css" type="text/css" />
     <script charset="UTF-8" src="kindeditor/kindeditor-min.js"></script>
     <script charset="UTF-8" src="kindeditor/lang/zh_CN.js"></script>
+
+    <!-- 新 Bootstrap 核心 CSS 文件 -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
+    <script src="js/jquery-3.4.1.min.js"></script>
+    <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+    <script src="js/bootstrap.min.js"></script>
+    <style>
+        *{
+            font-size:14px;
+        }
+    </style>
+
     <script>
         var editor;
         KindEditor.ready(function(K){
             editor=K.create('textarea[name="content"]',{
                 allowFileManager:true
             });
+            K('#image3').click(function(){
+                editor.loadPlugin('image',function(){
+                    editor.plugin.imageDialog({
+                        showRemote:false,
+                        imageUrl:K('#url3').val(),
+                        clickFn:function(url,title,width,height,border,align){
+                            K('#url3').val(url);
+                            editor.hideDialog();
+                        }
+                    });
+                });
+            });
         });
     </script>
 </head>
 <body>
-<form id="form1" name="form1" method="post" action="single_add_pass.php">
-    <table width="100%" border="1" cellspacing="0" cellpadding="0">
-        <tr>
-            <td colspan="2" class="tt">添加单页</td>
-        </tr>
-        <tr>
-            <td width="15%" height="35">
-                <span style="color:#F30">*</span>标题：
-            </td>
-            <td width="85%">
-                <input name="title" type="text" id="title" size="50" />
-            </td>
-        </tr>
-        <tr>
-            <td height="35">来源：
-            </td>
-            <td>
-                <input name="comefrom" type="text" id="comefrom" value="本站" />
-            </td>
-        </tr>
-        <tr>
-            <td height="35">发布日期：
-            </td>
-            <td>
-                <?php
-                date_default_timezone_set('UTC');
-                $pubdate = date("Y/m/d");
-                ?>
-                <input name="pubdate" type="text" id="pubdate" value="<?=$pubdate?>" />
-            </td>
-        </tr>
-        <tr>
-            <td height="68">关键字：</td>
-            <td>
-                <label for="keywords"></label>
-                <textarea name="keywords" cols="60" rows="3" id="keywords"></textarea>
-            </td>
-        </tr>
-        <tr>
-            <td height="68">描述：</td>
-            <td>
-                <textarea name="description" cols="60" rows="3" id="url3"></textarea>
-            </td>
-        </tr>
-        <tr>
-            <td height="353">
-                <span style="color:#F30">*</span>内容：
-            </td>
-            <td>
-                <textarea name="content" style="width:800px;height:300px;visibility:hidden;"></textarea>
-            </td>
-        </tr>
-        <tr>
-            <td height="35" colspan="2">
-                <input type="submit" name="Submit" value="提交" />
-            </td>
-        </tr>
-    </table>
-</form>
+<div class="container-fluid">
+    <h4>添加单页</h4>
+    <form id="form1" name="form1" method="post" action="single_add_pass.php">
+        <div class="form-group">
+            <label for="title"><span style="color:#F30">*</span>标题：</label>
+            <input id="title" name="title" class="form-control col-md-9"  type="text" size="50" />
+        </div>
+        <div class="form-group">
+            <label for="comefrom">来源：</label>
+            <input id="comefrom" name="comefrom" class="form-control col-md-9" type="text" size="50" />
+        </div>
+        <div class="form-group">
+            <label for="pubdate">发布日期：</label>
+            <?php
+            date_default_timezone_set('UTC');
+            $pubdate = date("Y/m/d");
+            ?>
+            <div class="input-group mb-3">
+                <input id="pubdate" name="pubdate" class="form-control col-md-9" type="text" size="50" value="<?=$pubdate?>" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="keywords">关键字：</label>
+            <textarea id="keywords" name="keywords" class="form-control col-md-9"  type="text" size="50"></textarea>
+        </div>
+        <div class="form-group">
+            <label for="description">描述：</label>
+            <textarea id="description" name="description" class="form-control col-md-9"  type="text" size="50"></textarea>
+        </div>
+        <div class="form-group">
+            <label for="content"><span style="color:#F30">*</span>内容：</label>
+            <textarea id="content" name="content" class="form-control col-md-9"  type="text" size="50"></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary">提&nbsp;&nbsp;&nbsp;&nbsp;交</button>
+    </form>
+</div>
 </body>
 </html>

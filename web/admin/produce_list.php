@@ -1,28 +1,38 @@
 <?php
 require_once('session.php');
-require_once('../inc/conn.php');
+require_once('../inc/conn_pdo.php');
 ?>
 <!doctype html>
 <html>
 <head>
     <meta http-equiv="content-type" content="text/html;charset=utf-8" />
-    <title>单页列表</title>
-    <link href="css/table.css" rel="stylesheet" type="text/css" />
+    <title>产品列表</title>
+    <!-- 新 Bootstrap 核心 CSS 文件 -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
+    <script src="js/jquery-3.4.1.min.js"></script>
+    <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+    <script src="js/bootstrap.min.js"></script>
+    <style>
+        *{
+            font-size:14px;
+        }
+    </style>
 </head>
 <body>
-    <table width="100%" border="1" cellspacing="0" cellpadding="0">
+    <table class="table table-striped table-hover table-bordered">
         <tr>
             <td class="tt" colspan="5">产品列表</td>
         </tr>
         <tr>
-            <td width="6%" height="35">ID</td>
-            <td width="19%">标题</td>
-            <td width="29%">发布日期</td>
+            <td>ID</td>
+            <td>标题</td>
+            <td>发布日期</td>
             <td colspan="2">操作</td>
         </tr>
         <?php
             //记录的总条数
-            $total_num=mysql_num_rows(mysql_query("select * from produce"));
+            $total_num=$dbh->query("select id from produce")->rowCount();
             //设置每页显示的记录数
             $pagesize=10;
             //计算总页数
@@ -42,12 +52,12 @@ require_once('../inc/conn.php');
             $nextpage=($page<>$page_num)?$page+1:$page;
             //读取指定的记录数
             $sql="select * from produce order by id desc limit $offset,$pagesize";
-            $result=mysql_query($sql);
+            $rows = $dbh->query($sql);
             if($total_num>0){
-                while($row=mysql_fetch_array($result)) {
+                foreach($rows as $row) {
                     ?>
                     <tr>
-                        <td height="31"><?php echo $row['id'] ?></td>
+                        <td><?php echo $row['id'] ?></td>
                         <td>
                             <?php echo $row['title'] ?>
                             <?php
@@ -57,12 +67,10 @@ require_once('../inc/conn.php');
                             ?>
                         </td>
                         <td><?php echo $row['pubdate'] ?></td>
-                        <td width="12%">
-                            <input type="submit" name="button" id="button" value="修改"
+                        <td>
+                            <input type="submit" name="button" id="button" value="修改" class="btn btn-secondary"
                                    onclick="window.location.href='produce_modify.php?id=<?php echo $row['id'] ?>'"/>
-                        </td>
-                        <td width="11%">
-                            <input type="submit" name="button2" id="button2" value="删除"
+                            <input type="submit" name="button2" id="button2" value="删除" class="btn btn-secondary"
                                    onclick="window.location.href='produce_delete.php?id=<?php echo $row['id'] ?>'"/>
                         </td>
                     </tr>
@@ -71,13 +79,13 @@ require_once('../inc/conn.php');
             }else {
                 ?>
                 <tr>
-                    <td height="35" colspan="5">暂无记录！</td>
+                    <td colspan="5">暂无记录！</td>
                 </tr>
                 <?php
             }
             ?>
         <tr>
-            <td height="43" colspan="6" align="center">
+            <td colspan="6" align="center">
                 <?=$page?>/<?=$page_num?>&nbsp;&nbsp;
                 <a href="?page=1">首页</a>&nbsp;&nbsp;
                 <a href="?page=<?=$prepage?>">上一页</a>&nbsp;&nbsp;
@@ -88,6 +96,6 @@ require_once('../inc/conn.php');
     </table>
 </body>
 <?php
-mysql_close($conn);
+$dbh = null;
 ?>
 </html>

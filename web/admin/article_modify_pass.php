@@ -1,6 +1,6 @@
 <?php
 require_once('session.php');
-require_once('../inc/conn.php');
+require_once('../inc/conn_pdo.php');
 ?>
 <!doctype html>
 <html>
@@ -11,33 +11,26 @@ require_once('../inc/conn.php');
 <body>
 <?php
 /* 处理推荐位数据 */
-$posid="";
+$posid = "";
 if($_POST['posid']<>''){
     foreach($_POST['posid'] as $i){
         $posid .= $i.",";
     }
     $posid = substr($posid,0,-1);
+}else{
+    $posid="";
 }
 
 $pubdate = trim($_POST['pubdate']);
 $keywords = trim($_POST['keywords']);
 $description = trim($_POST['description']);
 
-$sql="update article set title='".$_POST['title'].
-    "',comefrom='".$_POST['comefrom'].
-    "',pubdate='".$pubdate.
-    "',keywords='".$keywords.
-    "',description='".$description.
-    "',content='".$_POST['content'].
-    "',posid='".$posid."' where id='".$_GET['id']."'";
+$sql="update article set title=?,comefrom=?,pubdate=?,keywords=?,description=?,content=?,posid=? where id=?";
+$sth = $dbh->prepare($sql);
+$sth->execute(array($_POST['title'],$_POST['comefrom'],$pubdate,$keywords,$description,$_POST['content'],$posid,$_GET['id']));
 
-if(!mysql_query($sql,$conn))
-{
-    die('修改失败:' .mysql_error());
-}else{
-    echo "<script>alert('修改成功！');window.location.href='article_list.php';</script>";
-}
-mysql_close($conn);
+echo "<script>alert('修改成功！');window.location.href='article_list.php';</script>";
+$dbh = null;
 ?>
 </body>
 </html>

@@ -5,23 +5,30 @@ require_once('session.php');
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>管理员列表</title>
-    <link href="css/table.css" rel="stylesheet" type="text/css" />
+    <title>添加管理员</title>
+
+    <!-- 新 Bootstrap 核心 CSS 文件 -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
+    <script src="js/jquery-3.4.1.min.js"></script>
+    <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+    <script src="js/bootstrap.min.js"></script>
+    <style>
+        *{
+            font-size:14px;
+        }
+    </style>
 </head>
 <body>
-<form name="form_add" id="form_add" action="admin_add_pass.php" method="post" >
-    <table width="100%" border="1" cellspacing="0" cellpadding="0">
-        <tr>
-            <td class="tt" colspan="6">添加管理员</td>
-        </tr>
-        <tr>
-            <td width="6%" height="35"><span style="color:#F30">*</span>帐号</td>
-            <td width="30%"><input type="text" name="admin_name" id="admin_name" /></td>
-            <td width="13%"><span style="color:#F30">*</span>密码</td>
-            <td width="28%"><input name="admin_pass" type="password" id="admin_pass" size="30" /></td>
-            <td width="23%" colspan="2"><input type="submit" name="button" id="button" value="添加" /></td>
-        </tr>
-    </table>
-</form>
+<div class="container-fluid">
+    <h4>添加管理员</h4>
+    <form class="form-inline" name="form_add" id="form_add" action="admin_add_pass.php" method="post" >
+        <label for="admin_name" class="col-md-1"><span style="color:#F30">*</span>帐号:</label>
+        <input type="text" class="form-control col-md-3" id="admin_name" name="admin_name">
+        <label for="admin_pass" class="col-md-1"><span style="color:#F30">*</span>密码:</label>
+        <input type="password" class="form-control col-md-3" id="admin_pass" name="admin_pass" placeholder="Enter password">
+        <button type="submit" class="btn btn-primary">添&nbsp;&nbsp;&nbsp;&nbsp;加</button>
+    </form>
+</div>
 </body>
 </html>

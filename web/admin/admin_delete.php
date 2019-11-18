@@ -1,6 +1,6 @@
 <?php
 require_once('session.php');
-require_once ('../inc/conn.php');
+require_once ('../inc/conn_pdo.php');
 ?>
 <!DOCTYPE html>
 <html>
@@ -10,10 +10,13 @@ require_once ('../inc/conn.php');
 </head>
 <body>
 <?php
-$sql="delete from admin where id='".$_GET['id']."'";
-mysql_query($sql);
+
+$sql="delete from admin where id=?";
+$sth = $dbh->prepare($sql);
+$sth->execute(array($_GET['id']));
+
 echo "<script>alert('删除成功!');window.location.href='admin_list.php'</script>";
-mysql_close($conn);
+$dbh = null;
 ?>
 </body>
 </html>

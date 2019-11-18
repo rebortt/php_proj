@@ -6,22 +6,27 @@ require_once('../inc/conn_pdo.php');
 <html>
 <head>
     <meta http-equiv="content-type" content="text/html;charset=utf-8" />
+    <!-- 新 Bootstrap 核心 CSS 文件 -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
+    <script src="js/jquery-3.4.1.min.js"></script>
+    <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+    <script src="js/bootstrap.min.js"></script>
     <title>留言列表</title>
-    <link href="css/table.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
-<table width="100%" border="1" cellspacing="0" cellpadding="0">
+<table class="table table-striped table-hover table-bordered">
     <tr>
-        <td class="tt" colspan="5">留言列表</td>
+        <td colspan="7">留言列表</td>
     </tr>
     <tr>
-        <td width="13%" height="29"><strong>标题</strong></td>
-        <td width="11%"><strong>日期</strong></td>
-        <td width="11%"><strong>留言人</strong></td>
-        <td width="8%"><strong>联系方式</strong></td>
-        <td width="30%"><strong>留言内容</strong></td>
-        <td width="15%"><strong>是否处理</strong></td>
-        <td width="12%"><strong>操作</strong></td>
+        <td><strong>标题</strong></td>
+        <td><strong>日期</strong></td>
+        <td><strong>留言人</strong></td>
+        <td><strong>联系方式</strong></td>
+        <td><strong>留言内容</strong></td>
+        <td><strong>是否处理</strong></td>
+        <td><strong>操作</strong></td>
     </tr>
     <?php
     //记录的总条数
@@ -83,13 +88,13 @@ require_once('../inc/conn_pdo.php');
         }else {
         ?>
             <tr>
-                <td height="35" colspan="5">暂无记录！</td>
+                <td colspan="7">暂无记录！</td>
             </tr>
     <?php
     }
     ?>
     <tr>
-        <td height="43" colspan="7" align="center">
+        <td colspan="7" align="center">
             <?=$page?>/<?=$page_num?>&nbsp;&nbsp;
             <a href="?page=1">首页</a>&nbsp;&nbsp;
             <a href="?page=<?=$prepage?>">上一页</a>&nbsp;&nbsp;
