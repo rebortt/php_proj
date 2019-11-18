@@ -13,6 +13,11 @@ require_once('../inc/conn_pdo.php');
     <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
     <script src="js/bootstrap.min.js"></script>
     <title>留言列表</title>
+    <style>
+        *{
+            font-size:12px;
+        }
+    </style>
 </head>
 <body>
 <table class="table table-striped table-hover table-bordered">

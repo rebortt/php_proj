@@ -24,7 +24,7 @@ $sth = $dbh->prepare($sql_modify);
 $sth->execute(array($_POST['title'], $_POST['url'],$_GET['id']));
 
 echo "<script>alert('修改成功！');window.location.href='friend_list.php';</script>";
-mysql_close($conn);
+$dbh = null;
 ?>
 </body>
 </html>

@@ -58,7 +58,7 @@ $rs = $sth->fetch(PDO::FETCH_ASSOC);
     </script>
     <style>
         *{
-            font-size:14px;
+            font-size:12px;
         }
     </style>
 </head>

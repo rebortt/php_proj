@@ -35,6 +35,11 @@ $rows = $dbh->query($sql);
     <script src="js/jquery-3.4.1.min.js"></script>
     <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
     <script src="js/bootstrap.min.js"></script>
+    <style>
+        *{
+            font-size:12px;
+        }
+    </style>
 </head>
 <body>
 <table class="table table-striped table-hover table-bordered">

@@ -18,7 +18,7 @@ $row = $rows->fetch();
     <script src="js/bootstrap.min.js"></script>
     <style>
         *{
-            font-size:14px;
+            font-size:12px;
         }
     </style>
 </head>
@@ -39,6 +39,4 @@ $row = $rows->fetch();
 </div>
 </body>
 </html>
-<?php
-mysql_close($conn);
-?>
+<?php $dbh = null; ?>
