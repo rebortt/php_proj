@@ -42,9 +42,9 @@ $rows = $dbh->query($sql);
         <td colspan="5">友情链接列表</td>
     </tr>
     <tr>
-        <td height="35">标题</td>
+        <td>标题</td>
         <td>链接</td>
-        <td width="15%">操作</td>
+        <td>操作</td>
     </tr>
     <tr>
         <?php

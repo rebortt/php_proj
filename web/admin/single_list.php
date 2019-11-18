@@ -67,7 +67,6 @@ require_once('../inc/conn_pdo.php');
                 "<td>".$row['pubdate']."</td>".
                 "<td><input type='button' name='button' id='button' value='修改' class='btn btn-secondary' onclick='window.location.href=\"single_modify.php?id=".$row['id']."\"' />".
                 "    <input type='button' name='button2' id='button2' value='删除' class='btn btn-secondary' onclick='window.location.href=\"single_delete.php?id=".$row['id']."\"' ";
-            if($row['admin_name']=='admin'){echo "disabled='disabled'";}
             echo "/>".
                 "</td>".
                 "</tr>";
