@@ -20,21 +20,24 @@ $row = $rows->fetch();
         *{
             font-size:12px;
         }
+        label{
+            text-align: right;
+        }
     </style>
 </head>
 <body>
 <div class="container-fluid">
     <h4>修改友情链接</h4>
     <form id="form1" name="form1" action="friend_modify_pass.php?id=<?=$row['id']?>" method="post" >
-        <div class="form-group">
-            <label for="title"><span style="color:#F60">*</span>标题：</label>
+        <div class="form-group row">
+            <label for="title" class="col-md-2 col-form-label"><span style="color:#F60">*</span>标题：</label>
             <input id="title" name="title" class="form-control col-md-6"  type="text" size="50" value="<?=$row['title']?>" />
         </div>
-        <div class="form-group">
-            <label for="url"><span style="color:#F60">*</span>链接地址：</label>
+        <div class="form-group row">
+            <label for="url" class="col-md-2 col-form-label"><span style="color:#F60">*</span>链接地址：</label>
             <input id="url" name="url" class="form-control col-md-6" type="text" size="50" value="<?=$row['url']?>" />
         </div>
-        <button type="submit" class="btn btn-primary">提&nbsp;&nbsp;&nbsp;&nbsp;交</button>
+        <button type="submit" class="btn btn-primary offset-4">提&nbsp;&nbsp;&nbsp;&nbsp;交</button>
     </form>
 </div>
 </body>
