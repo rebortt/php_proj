@@ -13,12 +13,8 @@ require_once('session.php');
     <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
     <script src="js/bootstrap.min.js"></script>
     <style>
-        *{
-            font-size:12px;
-        }
-        label{
-            text-align: right;
-        }
+        *{font-size:12px;}
+        label{text-align: right;}
     </style>
 </head>
 <body>

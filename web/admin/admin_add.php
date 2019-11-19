@@ -27,7 +27,7 @@ require_once('session.php');
         <input type="text" class="form-control col-md-3" id="admin_name" name="admin_name">
         <label for="admin_pass" class="col-md-1"><span style="color:#F30">*</span>密码:</label>
         <input type="password" class="form-control col-md-3" id="admin_pass" name="admin_pass" placeholder="Enter password">
-        <button type="submit" class="btn btn-primary">添&nbsp;&nbsp;&nbsp;&nbsp;加</button>
+        <button type="submit" class="btn btn-primary" style="margin-left:20px;">添&nbsp;&nbsp;&nbsp;&nbsp;加</button>
     </form>
 </div>
 </body>

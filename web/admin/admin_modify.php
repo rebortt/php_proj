@@ -30,7 +30,7 @@ $row = $rows->fetch();
         <input type="text" class="form-control col-md-3" id="admin_name" name="admin_name" value="<?=$row['admin_name']?>" disabled='disabled'>
         <label for="admin_pass"  class="col-md-1">密码:</label>
         <input type="password" class="form-control col-md-3" id="admin_pass" name="admin_pass" placeholder="若修改，请输入新密码！">
-        <button type="submit" class="btn btn-primary">修&nbsp;&nbsp;&nbsp;&nbsp;改</button>
+        <button type="submit" class="btn btn-primary" style="margin-left:20px;">修&nbsp;&nbsp;&nbsp;&nbsp;改</button>
     </form>
 </div>
 </body>
