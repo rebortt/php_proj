@@ -20,6 +20,9 @@ $row = $rows->fetch();
         *{
             font-size:12px;
         }
+        label{
+            text-align: right;
+        }
     </style>
 </head>
 <body>
