@@ -44,7 +44,7 @@ $rows = $dbh->query($sql);
 <body>
 <table class="table table-striped table-hover table-bordered">
     <tr>
-        <td colspan="5">友情链接列表</td>
+        <td colspan="3">友情链接列表</td>
     </tr>
     <tr>
         <td>标题</td>
@@ -65,7 +65,7 @@ $rows = $dbh->query($sql);
     <?php
     }
     }else{
-        echo "<tr><td colspan='5' style='color:red;font-size:13px'>暂无记录</td></tr>";
+        echo "<tr><td colspan='3' style='color:red;font-size:13px'>暂无记录</td></tr>";
     }
     ?>
     <tr>
